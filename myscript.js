@@ -4,10 +4,9 @@
 var start = function() {
 	
 	//  clear active positions from the board. 
-	var positions = document.getElementsByClassName("active");
+	var positions = document.querySelectorAll(".active");
 	for (i=positions.length-1; i>-1 ; i--) {
 	//iteration is reversed because the position array reduces in size by 1 each iteration. 
-		console.log(positions[i].classList);
 		positions[i].classList.remove("active");
 	}
 
@@ -44,10 +43,15 @@ var finished = function(player) {
 
 	if (players[player].position.classList[0] == "finish") {
 		finisher = true;
+
 		
 		// update score
 		players[player].score++;
-		console.log('Player 1 score: '+players['Player 1'].score +'\n'+ 'Player 2 score: '+players['Player 2'].score)
+		//____   Scoreboard
+		var scoreboard = document.getElementById('scoreboard')
+		var scores = "<h2>Scoreboard</h2><br><h2>Player 1:</h2><br>"+players['Player 1'].score+ "<br><h2>Player 2:</h2><br>"+players['Player 2'].score;
+		scoreboard.innerHTML = scores;
+
 
 		//Ask to replay. 
 		var replay = confirm(player+ ' wins!!!\n \nDo you want a re-match?');
@@ -83,12 +87,18 @@ var keypress = function (key) {
 	};
 }
 
+
+
+
+
 //   Initiate GAME PLAY!   
 /*
 
 1)____ Set up players & set finisher to false.
 
 2)____ Initiate start function
+
+3) Put scoreboard on the page. 
 
 */
 
@@ -106,6 +116,8 @@ var players = {
 }
 
 var finisher = false;
+
+
 
 
 start();
