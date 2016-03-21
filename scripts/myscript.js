@@ -1,3 +1,10 @@
+//   Initiate GAME PLAY!   
+
+//____________________________________________________________________________________
+
+
+
+//___________________________________________________________________________________
 
 
 //  Start function:   This function sets initial positions to the start point of the table.  And resets active positions to "". 
@@ -12,7 +19,8 @@ var start = function() {
 
 	//  Put players back to start position. 
 	for(var key in players) {
-		document.getElementById(players[key].stripID).children[0].classList.add("active"); 
+		var array = document.getElementsByClassName(players[key].stripID)
+		array[array.length-1].classList.add("active"); 
 	}
 
 	// call set=Pos to define position variables. 
@@ -23,10 +31,13 @@ var start = function() {
 	document.addEventListener("keyup", keypress, false);
 }
 
+
+//  Set position: function to update position of players in Player object. 
+
 var setPos = function (replay) {
 	// re-initialise position variables in pplayer object. 
-	players['Player 1'].position = document.getElementsByClassName('active')[0]; 
-	players['Player 2'].position = document.getElementsByClassName('active')[1];
+	players['Player 1'].position = document.getElementsByClassName('Player_1 active')[0]; 
+	players['Player 2'].position = document.getElementsByClassName('Player_2 active')[0];
 	// [0] index is returning the table entry that is currently active.  there sohuld only be two entries that are avtive on the whole page. 
 }
 
@@ -40,17 +51,16 @@ var whichPlayer = function (player){
 
 var finished = function(player) {
 //Check if player has crossed the finishe line.  Ask for new game.  Update score. 
-
-	if (players[player].position.classList[0] == "finish") {
+	
+	if (players[player].position.classList[1] == "finish") {
 		finisher = true;
-
 		
 		// update score
 		players[player].score++;
 		//____   Scoreboard
-		var scoreboard = document.getElementById('scoreboard')
-		var scores = "<h2>Scoreboard</h2><br><h2>Player 1:</h2><br>"+players['Player 1'].score+ "<br><h2>Player 2:</h2><br>"+players['Player 2'].score;
-		scoreboard.innerHTML = scores;
+		var scoreboard = document.getElementById(players[player].scorebox).childNodes[3]
+		var scores = document.createTextNode(players[player].score);
+		scoreboard.appendChild(scores);
 
 
 		//Ask to replay. 
@@ -63,7 +73,8 @@ var finished = function(player) {
 
 var updatePosition = function (player) {
 	// move player forward on the board
-	players[player].position.nextElementSibling.classList.add("active");
+	players[player].position.parentNode.previousSibling.previousSibling.childNodes[players[player].lane].classList.add("active")
+	//players[player].position.nextElementSibling.classList.add("active");
 	players[player].position.classList.remove("active");
 	
 	// re-initialise position variables in pplayer object. 
@@ -89,37 +100,28 @@ var keypress = function (key) {
 
 
 
-
-
-//   Initiate GAME PLAY!   
-/*
-
-1)____ Set up players & set finisher to false.
-
-2)____ Initiate start function
-
-3) Put scoreboard on the page. 
-
-*/
-
+// 1)____ Set up players & set finisher to false.
 var players = {
 	'Player 1': {
 		stripID: "Player_1",
 		score: 0,
 		position:"",
+		lane: 0,
+		scorebox: "player1box"
 	},
 	'Player 2': {
 		stripID: "Player_2",
 		score: 0,
 		position:"",
+		lane: 1,
+		scorebox: "player2box"
 	}
 }
-
 var finisher = false;
 
-
-
+// 2)____ Initiate start of game. 
 
 start();
+
 
 

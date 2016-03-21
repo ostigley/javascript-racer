@@ -1,0 +1,51 @@
+*{
+	outline: red 3px solid;
+}
+
+header h1 {
+text-align: center;
+}
+
+
+#main {
+	display: flex;
+}
+
+
+.racer_table {
+  background-color: green;
+  height: 500px;
+  width: 200px;
+  margin-left: auto;
+  margin-right: auto;
+
+ 
+}
+
+
+
+.racer_table td.active {
+  background-color: white;
+}
+
+#grandstand {
+	/*height: 600px;*/
+	/*width: auto;*/
+
+	;
+}
+
+#car1 {
+	height: 50px;
+	width: 50px;
+	background-color: blue;
+}
+
+body {
+/*	background-image: url("../images/grandstand.jpeg");
+	background-repeat: no-repeat;
+	background-size: cover;
+	margin-left: auto;
+	margin-right: auto;
+	align-content: center;*/
+}

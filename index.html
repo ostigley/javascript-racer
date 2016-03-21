@@ -7,46 +7,53 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
 
-	<link rel="stylesheet" type="text/css" href="styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/styles.css">
 	<link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/3.0.3/normalize.css">
 </head>
 <body>
 	<main>
-		<table class="racer_table">
-		  <tr id="Player_1">
-		    <td>position 1</td>
-		    <td>position 2</td>
-		    <td>position 3</td>
-		    <td>position 4</td>
-		    <td>position 5</td>
-		    <td>position 6</td>
-		    <td>position 7</td>
-		    <td>position 8</td>
-		    <td>position 9</td>
-		    <td class="finish">position 10</td>
-		  </tr>
+		<header>
+			<h1>Drag Racing!</h1>
+		</header>
 
-		  <tr id="Player_2">
-		    <td>position 1</td>
-		    <td>position 2</td>
-		    <td>position 3</td>
-		    <td class="active">position 4</td>
-		    <td>position 5</td>
-		    <td>position 6</td>
-		    <td>position 7</td>
-		    <td>position 8</td>
-		    <td>position 9</td>
-		    <td class="finish">position 10</td>
-		  </tr>
-		</table> <br>
+		<div id="main">
+			<section id="player1box">
+				<h3>Player 1 Score:</h3>
+				<h4></h4>
+				</section>
+			</section>
+
+			<table class="racer_table">
+			  
+			    <tr><td class="Player_1 finish">position 1</td><td class="Player_2 finish">position 1</tr>
+			    <tr><td class="Player_1">position 2</td><td class="Player_2">position 2</tr>
+			    <tr><td class="Player_1">position 3</td><td class="Player_2">position 3</tr>
+			    <tr><td class="Player_1">position 4</td><td class="Player_2">position 4</tr>
+			    <tr><td class="Player_1">position 5</td><td class="Player_2">position 5</tr>
+			    <tr><td class="Player_1">position 6</td><td class="Player_2">position 6</tr>
+			    <tr><td class="Player_1">position 7</td><td class="Player_2">position 7</tr>
+			    <tr><td class="Player_1">position 8</td><td class="Player_2">position 8</tr>
+			    <tr><td class="Player_1">position 9</td><td class="Player_2">position 9</tr>
+			    <tr><td class="Player_1">position 10</td><td class="Player_2">position 10</td></tr>
+			  
+
+
+			</table> <br>
+
+			<section id="player2box">
+				<h3>Player 2 Score:</h3>
+				<h4></h4>
+			</section>
+
+		</main>
+		<div id="car1"></div>
 
 		<div id='scoreboard'>
 			
-		</div>	
 
-	</main>
+	</div>
 
 
-	<script type="text/javascript" src="myscript.js"></script>
+	<script type="text/javascript" src="scripts/myscript.js"></script>
 </body>
 </html>
