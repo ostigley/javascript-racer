@@ -36,8 +36,10 @@ var start = function() {
 
 var setPos = function (replay) {
 	// re-initialise position variables in pplayer object. 
-	players['Player 1'].position = document.getElementsByClassName('Player_1 active')[0]; 
-	players['Player 2'].position = document.getElementsByClassName('Player_2 active')[0];
+
+	for(var key in players) {
+		players[key].position = document.getElementsByClassName(players[key].stripID + ' active')[0]
+	}
 	// [0] index is returning the table entry that is currently active.  there sohuld only be two entries that are avtive on the whole page. 
 }
 
@@ -59,8 +61,8 @@ var finished = function(player) {
 		players[player].score++;
 		//____   Scoreboard
 		var scoreboard = document.getElementById(players[player].scorebox).childNodes[3]
-		var scores = document.createTextNode(players[player].score);
-		scoreboard.appendChild(scores);
+		var scores = document.createTextNode(players[player].scores);
+		scoreboard.textContent = players[player].score;
 
 
 		//Ask to replay. 
