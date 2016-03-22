@@ -25,11 +25,37 @@ var start = function() {
 
 	// call set=Pos to define position variables. 
 	setPos();
-	finisher = false;
 
+	////    traffic light function here. 
+	var lights = [".light1",".light2",".light3"];
+	
+	var counter=0;
+	var turngreen = function(light) {
+		L = document.querySelectorAll(light);
+		for(i=0; i<L.length; i++ ) {
+			L[i].classList.remove('redlight');
+			L[i].classList.add('greenlight');
+		}
+		counter++
+
+		var countdown = document.querySelectorAll('.counter');
+		// countdown_text = document.createTextNode(toString((3-counter)));
+		for (i=0; i<countdown.length; i++) {	
+			countdown[i].innerHTML = 3-counter;
+		}
+
+		if (counter >2) {
+			return document.addEventListener("keyup", keypress, false);
+		} else {
+			return window.setTimeout(turngreen, 1000,lights[counter]);
+		}
+	}
+	window.setTimeout(turngreen, 1000,lights[0]);
+
+	finisher = false;
 	//   initiate event listener for movements
-	document.addEventListener("keyup", keypress, false);
-}
+	
+	}
 
 
 //  Set position: function to update position of players in Player object. 
@@ -56,14 +82,23 @@ var finished = function(player) {
 	
 	if (players[player].position.classList[1] == "finish") {
 		finisher = true;
+		document.removeEventListener("keyup", keypress, false)
+
+		// Turn lights red all at the same time
+		L = document.querySelectorAll(".light1, .light2, .light3");
+		for(i=0; i<L.length; i++ ) {
+			L[i].classList.remove('greenlight');
+			L[i].classList.add('redlight')
+		}
+
 		
 		// update score
 		players[player].score++;
 		//____   Scoreboard
-		var scoreboard = document.getElementById(players[player].scorebox).childNodes[3]
-		var scores = document.createTextNode(players[player].scores);
-		scoreboard.textContent = players[player].score;
-
+		for (var key in players) {
+		var scoreboard = document.getElementById(players[key].scorebox).childNodes[3]
+		scoreboard.textContent = players[key].score;
+		}
 
 		//Ask to replay. 
 		var replay = confirm(player+ ' wins!!!\n \nDo you want a re-match?');
@@ -124,6 +159,22 @@ var finisher = false;
 // 2)____ Initiate start of game. 
 
 start();
+
+
+///   coundown counter. 
+
+
+
+
+
+
+
+//__________________
+
+
+// traffic lights
+
+
 
 
 

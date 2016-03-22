@@ -1,9 +1,12 @@
-/**{
-	outline: red 3px solid;
-}*/
+
+
 
 header h1 {
 text-align: center;
+}
+
+h4 {
+	text-align: center;
 }
 
 
@@ -45,12 +48,7 @@ td {
     border-right-style: dashed;
 }
 
-#grandstand {
-	/*height: 600px;*/
-	/*width: auto;*/
 
-	;
-}
 
 #car1 {
 	height: 50px;
@@ -61,3 +59,70 @@ td {
 body {
 
 }
+
+#player1box {
+	margin-left: 70px;
+}
+
+#player2box {
+	margin-right: 70px;
+}
+section.trafficlights {
+    height: 210px;
+    width: 90px;
+    background-color: black;
+    margin-top: 250px;
+    display: table;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.light1 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background-color: red;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+
+}
+
+.light2 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background-color: red;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+
+}
+
+.light3 {
+    height: 50px;
+    width: 50px;
+    border-radius: 100%;
+    background-color: red;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 15px;
+
+}
+
+.greenlight {
+	background-color: green;
+}
+.redlight {
+	background-color: red;
+}
+
+.countdownbox {
+	text-align: center;
+	margin-left: auto;
+	margin-right: auto;
+	margin-top: 300px;
+	font-size: 30px;
+}
+
+
