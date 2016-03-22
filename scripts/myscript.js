@@ -1,3 +1,5 @@
+var audio = new Audio('scripts/revs.mp3');
+audio.play();
 //   Initiate GAME PLAY!   
 
 //____________________________________________________________________________________
