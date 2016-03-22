@@ -10,6 +10,21 @@
 //  Start function:   This function sets initial positions to the start point of the table.  And resets active positions to "". 
 var start = function() {
 	
+	//dynamic tracklength
+	
+	trackLength = Number(prompt('How long would you like your race?  Enter a number between 1 and 20'));
+	for (i=0; i<trackLength; i++) {
+		var racetrack = document.querySelector('tbody');
+		var startline = document.querySelector('#start');
+		var trackpiece = document.createElement("tr");
+		trackpiece.innerHTML = "<td class=\"Player_1\"></td><td class=\"Player_2\"></td>";
+		racetrack.insertBefore(trackpiece, startline);
+	}
+	document.querySelector('tbody').removeChild(document.querySelector('tbody').childNodes[1])
+	// the above line deletes a pesky html element that mysteriuosly gets created.  Update position function
+	// does not work without.  This is a temp work around. 
+
+	
 	//  clear active positions from the board. 
 	var positions = document.querySelectorAll(".active");
 	for (i=positions.length-1; i>-1 ; i--) {
@@ -110,7 +125,7 @@ var finished = function(player) {
 
 var updatePosition = function (player) {
 	// move player forward on the board
-	players[player].position.parentNode.previousSibling.previousSibling.childNodes[players[player].lane].classList.add("active")
+	players[player].position.parentNode.previousSibling.childNodes[players[player].lane].classList.add("active")
 	//players[player].position.nextElementSibling.classList.add("active");
 	players[player].position.classList.remove("active");
 	
@@ -154,6 +169,7 @@ var players = {
 		scorebox: "player2box"
 	}
 }
+var trackLength;
 var finisher = false;
 
 // 2)____ Initiate start of game. 

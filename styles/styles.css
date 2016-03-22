@@ -27,13 +27,11 @@ background-size: cover;*/
  
 }
 
-tbody {
-	background-color: grey;
 
-}
 td {
 	height: 60px;
 	width: 100px;
+  background-color: grey;
 }
 
 
