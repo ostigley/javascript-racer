@@ -85,7 +85,7 @@ var whichPlayer = function (player){
 var finished = function(player) {
 //Check if player has crossed the finishe line.  Ask for new game.  Update score. 
 	
-	if (players[player].position.classList[1] == "finish") {
+	if (players[player].position.parentNode.classList[0] == "finish") {
 		finisher = true;
 		document.removeEventListener("keyup", keypress, false)
 
@@ -95,10 +95,10 @@ var finished = function(player) {
 			L[i].classList.remove('greenlight');
 			L[i].classList.add('redlight')
 		}
-
 		
 		// update score
 		players[player].score++;
+
 		//____   Scoreboard
 		for (var key in players) {
 		var scoreboard = document.getElementById(players[key].scorebox).childNodes[3]
