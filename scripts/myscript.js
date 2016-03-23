@@ -1,5 +1,7 @@
-var audio = new Audio('scripts/revs.mp3');
-audio.play();
+// var audio = new Audio('scripts/revs.mp3');
+// audio.play();
+
+
 //   Initiate GAME PLAY!   
 
 //____________________________________________________________________________________
@@ -14,17 +16,22 @@ var start = function() {
 	
 	//dynamic tracklength
 	
-	trackLength = Number(prompt('How long would you like your race?  Enter a number between 1 and 20'));
-	for (i=0; i<trackLength; i++) {
-		var racetrack = document.querySelector('tbody');
-		var startline = document.querySelector('#start');
-		var trackpiece = document.createElement("tr");
-		trackpiece.innerHTML = "<td class=\"Player_1\"></td><td class=\"Player_2\"></td>";
-		racetrack.insertBefore(trackpiece, startline);
-	}
-	document.querySelector('tbody').removeChild(document.querySelector('tbody').childNodes[1])
-	// the above line deletes a pesky html element that mysteriuosly gets created.  Update position function
-	// does not work without.  This is a temp work around. 
+	// trackLength = Number(prompt('How long would you like your race?  Enter a number between 1 and 20'));
+	// for (i=0; i<trackLength; i++) {
+	// 	var racetrack = document.querySelector('tbody');
+	// 	var startline = document.querySelector('#start');
+	// 	var trackpiece = document.createElement("tr");
+	// 	trackpiece.innerHTML = "<td class=\"Player_1\"></td><td class=\"Player_2\"></td>";
+	// 	racetrack.insertBefore(trackpiece, startline);
+	// }
+	// document.querySelector('tbody').removeChild(document.querySelector('tbody').childNodes[1])
+	// // the above line deletes a pesky html element that mysteriuosly gets created.  Update position function
+	// // does not work without.  This is a temp work around. 
+
+
+
+
+///////////////////////////////////////////////////////////////
 
 	
 	//  clear active positions from the board. 
