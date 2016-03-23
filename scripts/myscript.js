@@ -64,7 +64,7 @@ var start = function() {
 
 //  Set position: function to update position of players in Player object. 
 
-var setPos = function (replay) {
+var setPos = function () {
 	// re-initialise position variables in pplayer object. 
 
 	for(var key in players) {
@@ -117,21 +117,30 @@ var updatePosition = function (player, direction) {
 	// move player forward on the board
 	// players[player].position.parentNode.previousSibling.childNodes[players[player].lane].classList.add("active")
 	
+	var removeOldPosition = function(player) {
+		players[player].position.classList.remove("active");
+	}
 	switch (direction) {
 
 		case 'left':
-			players[player].position.previousSibling.classList.add('active')
+			if (!laneBoundries.check(player, 'left')) {
+				players[player].position.previousSibling.classList.add('active'); 
+				removeOldPosition(player);
+			}
 			break;
 		case 'right':
-			players[player].position.nextSibling.classList.add('active')
+			if (!laneBoundries.check(player, 'right')) {
+				players[player].position.nextSibling.classList.add('active');
+				removeOldPosition(player);
+			}
 			break;
 		case 'up':
 			players[player].position.parentNode.previousSibling.childNodes[players[player].lane].classList.add("active")
+			removeOldPosition(player);
 			break;
 		};
 	
 
-	players[player].position.classList.remove("active");
 
 
 	// re-initialise position variables in pplayer object. 
@@ -169,6 +178,7 @@ var keypress = function (key) {
 }
 
 
+//    OBJECTS!
 
 // 1)____ Set up players & set finisher to false.
 var players = {
@@ -187,7 +197,12 @@ var players = {
 		scorebox: "player2box"
 	}
 }
-var trackLength;
+
+// lane boundries
+
+
+
+
 var finisher = false;
 
 // 2)____ Initiate start of game. 
