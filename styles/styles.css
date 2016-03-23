@@ -32,7 +32,6 @@ td {
 	height: 30px;
 	width: 30px;
   background-color: grey;
-  border-right: 1px white;
 }
 
 
@@ -47,6 +46,11 @@ td {
     border-right-style: dashed;
 }
 
+.Player_2 {
+    border-right: white 5px;
+    border-right-style: dashed;
+}
+
 
 
 #car1 {
@@ -54,6 +58,10 @@ td {
 	width: 50px;
 	background-color: blue;
 }
+
+td.othercars { 
+  background-color: red;
+ }
 
 body {
 

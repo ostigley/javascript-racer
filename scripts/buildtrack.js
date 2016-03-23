@@ -2,7 +2,7 @@
 
 var trackWidth = Number(prompt('How big?'));
 
-for (i=0; i<25; i++) {
+for (i=0; i<20; i++) {
 	// set racetrack variable by finding table body
 	var racetrack = document.querySelector('tbody')
 	// clear existing html ifplayers want different size game
@@ -29,9 +29,9 @@ for (i=0; i<25; i++) {
 
 }
 
-//Add finish line
+//Add finish and start line
 document.querySelector('tr').classList.add('finish');
-
+document.querySelectorAll('tr')[19].classList.add('start')
 //  Set left and right lane broundries: 
 
 var laneBoundries = {

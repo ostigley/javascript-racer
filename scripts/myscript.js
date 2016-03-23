@@ -49,6 +49,8 @@ var start = function() {
 		}
 
 		if (counter >2) {
+			var intervalAddCar = setInterval(addCars, 200);
+			var intervalmoveCarsDown = setInterval(moveCarsDown, 200);
 			return document.addEventListener("keyup", keypress, false);
 		} else {
 			return window.setTimeout(turngreen, 1000,lights[counter]);
@@ -113,41 +115,52 @@ var finished = function(player) {
 	}
 };
 
-var updatePosition = function (player, direction) {
+var updatePosition = function (player, direction,otherCarLane) {
 	// move player forward on the board
-	// players[player].position.parentNode.previousSibling.childNodes[players[player].lane].classList.add("active")
-	
-	var removeOldPosition = function(player) {
-		players[player].position.classList.remove("active");
+	if (direction != "down") {
+		var playerPosition = players[player].position;
 	}
+
+	var removeOldPosition = function (position, class2remove){
+		position.classList.remove(class2remove);
+	};
+
 	switch (direction) {
 
 		case 'left':
 			if (!laneBoundries.check(player, 'left')) {
-				players[player].position.previousSibling.classList.add('active'); 
-				removeOldPosition(player);
+				playerPosition.previousSibling.classList.add('active'); 
+				removeOldPosition(playerPosition, "active");
 			}
 			break;
 		case 'right':
 			if (!laneBoundries.check(player, 'right')) {
-				players[player].position.nextSibling.classList.add('active');
-				removeOldPosition(player);
+				playerPosition.nextSibling.classList.add('active');
+				removeOldPosition(playerPosition, "active");
 			}
 			break;
 		case 'up':
-			players[player].position.parentNode.previousSibling.childNodes[players[player].lane].classList.add("active")
-			removeOldPosition(player);
+			playerPosition.parentNode.previousSibling.childNodes[players[player].lane].classList.add("active")
+			removeOldPosition(playerPosition, "active");
+			break;
+		case 'down':
+			// 'player' parameter here is actually the position of the red car.  move down if not at start
+			if(player.parentNode.classList[0] != 'start') {
+				player.parentNode.nextSibling.childNodes[otherCarLane].classList.add("othercars");
+				removeOldPosition(player, "othercars");
+			}
 			break;
 		};
 	
 
 
-
 	// re-initialise position variables in pplayer object. 
 	setPos();
 
-	//check if finished:
-	finished(player);
+	//check if finished, if update position function has been called to move a player (not a red car):
+	if(player == 'Player 1' || player == 'Player 2') {
+		finished(player);
+	}
 }
 
 var keypress = function (key) {
