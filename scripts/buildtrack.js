@@ -1,25 +1,24 @@
 
 	
-	trackLength = Number(prompt('How big?'));
-	for (i=0; i<trackLength; i++) {
+	trackWidth = Number(prompt('How big?'));
+	for (i=0; i<25; i++) {
 		var racetrack = document.querySelector('tbody');
 		var tableRows = document.createElement("tr")
 		racetrack.appendChild(tableRows);
 
-		for (j=0; j<trackLength; j++) { 
-			var tableCols = document.createElement('td');
+		for (j=0; j<(trackWidth*2); j++) { 
+			var tableCols = document.createElement('td')
+			tableCols.classList.add('L'+j);
+
+			if (j < trackWidth) {
+				tableCols.classList.add('Player_1')
+			} else {
+				tableCols.classList.add('Player_2')
+			}
+
 			tableRows.appendChild(tableCols);
+			
 		}
+
 	}
 
-
-/*
-
-
-		var startline = document.querySelector('#start');
-		trackpiece.innerHTML = "<td class=\"Player_1\"></td><td class=\"Player_2\"></td>";
-		racetrack.insertBefore(trackpiece, startline);
-	}
-	document.querySelector('tbody').removeChild(document.querySelector('tbody').childNodes[1])
-	// the above line deletes a pesky html element that mysteriuosly gets created.  Update position function
-	// does not work without.  This is a temp work around. */

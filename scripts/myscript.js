@@ -14,26 +14,6 @@
 //  Start function:   This function sets initial positions to the start point of the table.  And resets active positions to "". 
 var start = function() {
 	
-	//dynamic tracklength
-	
-	// trackLength = Number(prompt('How long would you like your race?  Enter a number between 1 and 20'));
-	// for (i=0; i<trackLength; i++) {
-	// 	var racetrack = document.querySelector('tbody');
-	// 	var startline = document.querySelector('#start');
-	// 	var trackpiece = document.createElement("tr");
-	// 	trackpiece.innerHTML = "<td class=\"Player_1\"></td><td class=\"Player_2\"></td>";
-	// 	racetrack.insertBefore(trackpiece, startline);
-	// }
-	// document.querySelector('tbody').removeChild(document.querySelector('tbody').childNodes[1])
-	// // the above line deletes a pesky html element that mysteriuosly gets created.  Update position function
-	// // does not work without.  This is a temp work around. 
-
-
-
-
-///////////////////////////////////////////////////////////////
-
-	
 	//  clear active positions from the board. 
 	var positions = document.querySelectorAll(".active");
 	for (i=positions.length-1; i>-1 ; i--) {
@@ -89,6 +69,7 @@ var setPos = function (replay) {
 
 	for(var key in players) {
 		players[key].position = document.getElementsByClassName(players[key].stripID + ' active')[0]
+		players[key].lane = Number(players[key].position.classList[0].slice(1));
 	}
 	// [0] index is returning the table entry that is currently active.  there sohuld only be two entries that are avtive on the whole page. 
 }
@@ -132,12 +113,27 @@ var finished = function(player) {
 	}
 };
 
-var updatePosition = function (player) {
+var updatePosition = function (player, direction) {
 	// move player forward on the board
-	players[player].position.parentNode.previousSibling.childNodes[players[player].lane].classList.add("active")
-	//players[player].position.nextElementSibling.classList.add("active");
-	players[player].position.classList.remove("active");
+	// players[player].position.parentNode.previousSibling.childNodes[players[player].lane].classList.add("active")
 	
+	switch (direction) {
+
+		case 'left':
+			players[player].position.previousSibling.classList.add('active')
+			break;
+		case 'right':
+			players[player].position.nextSibling.classList.add('active')
+			break;
+		case 'up':
+			players[player].position.parentNode.previousSibling.childNodes[players[player].lane].classList.add("active")
+			break;
+		};
+	
+
+	players[player].position.classList.remove("active");
+
+
 	// re-initialise position variables in pplayer object. 
 	setPos();
 
@@ -150,11 +146,24 @@ var keypress = function (key) {
 		var k = key.which;
 		switch (k) {
 			case 90: 
-			updatePosition('Player 1');
+			updatePosition('Player 1', 'left');
 			break;
-			case 191: 
-			updatePosition('Player 2');
+			case 88: 
+			updatePosition('Player 1', 'up');
 			break;	
+			case 67: 
+			updatePosition('Player 1', 'right');
+			break;
+
+			case 188: 
+			updatePosition('Player 2', 'left');
+			break;
+			case 190: 
+			updatePosition('Player 2', 'up');
+			break;	
+			case 191: 
+			updatePosition('Player 2', 'right');
+			break;
 		};
 	};
 }
@@ -174,7 +183,7 @@ var players = {
 		stripID: "Player_2",
 		score: 0,
 		position:"",
-		lane: 1,
+		lane: 0,
 		scorebox: "player2box"
 	}
 }
