@@ -16,5 +16,19 @@ var moveCarsDown = function(){
 	}
 }
 
+var carCrash = function(){
+	var activePositions = document.querySelectorAll('.active');
+	for(i=0; i<activePositions.length; i++) {
+		if ( activePositions[i].classList.contains('othercars') ) {
+
+			console.log('car crash!');
+			return finished( players.findPlayer(activePositions[i].classList[1]), true);
+		}
+		
+	}
+// players.findPlayer(activePositions[i].classList[1]
+
+}
+
 
 

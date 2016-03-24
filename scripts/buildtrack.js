@@ -1,6 +1,6 @@
 //   Build track HTML
 
-var trackWidth = Number(prompt('How big?'));
+var trackWidth = Number(prompt('How many lanes?  3-10'));
 
 for (i=0; i<20; i++) {
 	// set racetrack variable by finding table body
@@ -24,14 +24,17 @@ for (i=0; i<20; i++) {
 		}
 
 		tableRows.appendChild(tableCols);
-		
 	}
-
 }
 
-//Add finish and start line
+//Add finish and start line and starting positions
 document.querySelector('tr').classList.add('finish');
 document.querySelectorAll('tr')[19].classList.add('start')
+//add starting blokc half way along number of lanes for each player. 
+document.querySelector('.start').childNodes[Math.floor(trackWidth/2)].classList.add("startingBlock");
+document.querySelector('.start').childNodes[Math.floor(trackWidth/2)+trackWidth].classList.add("startingBlock");
+
+
 //  Set left and right lane broundries: 
 
 var laneBoundries = {

@@ -41,6 +41,12 @@ td {
   background-size: cover;
 }
 
+
+td.othercars { 
+  background-image: url("../images/car-4-512.png");
+  background-size: cover;
+ }
+
 .Player_1 {
     border-right: yellow 5px;
     border-right-style: dashed;
@@ -59,9 +65,7 @@ td {
 	background-color: blue;
 }
 
-td.othercars { 
-  background-color: red;
- }
+
 
 body {
 
