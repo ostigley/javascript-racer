@@ -102,10 +102,7 @@ var finished = function(carCrashBoolean) {
 
 
 
-		//____   Scoreboard
-			
-		// var scoreboard = document.getElementById(players['Player 1'].scorebox).childNodes[3];
-		// scoreboard.textContent = players['Player 1'].score;
+
 		
 	
 	}
@@ -204,7 +201,7 @@ var keypress = function (key) {
 var players = {
 	'Player 1': {
 		stripID: "Player_1",
-		score: 0,
+		score: 000000000,
 		position:"",
 		lane: 0,
 		scorebox: "player1box"
@@ -265,16 +262,23 @@ var blasterMove = function(){
 		//remove previous position. 
 		blasters[i].classList.remove('blaster');
 
-		// blow up car if blaster hits it.
+		// blow up car if blaster hits it. And update score by 100
 
 		if (newBlasterPos.classList.contains('othercars')) {
 			newBlasterPos.classList.remove('othercars', 'blaster');
+			players['Player 1'].score+=100;
+			scoreboard.textContent = players['Player 1'].score;
+
 			var boomNoise = new Audio('scripts/boomnoise.mp3');
 			boomNoise.play();
 		}
 
 	}
 }
+
+//____   Scoreboard
+
+var scoreboard = document.getElementById('score');
 
 
 
