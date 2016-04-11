@@ -6,7 +6,7 @@
 
 //____________________________________________________________________________________
 
-
+confirm('Use the arrow keys to move and the spacebar to shoot. \nTake out those tie-fighters!')
 
 //___________________________________________________________________________________
 
@@ -99,6 +99,7 @@ var finished = function(carCrashBoolean) {
 		window.clearInterval(intervalAddCar);
 		window.clearInterval(intervalmoveCarsDown);
 		window.clearInterval(intervalCarCrash);
+		window.clearInterval(intervalBlaster);
 
 
 
@@ -112,7 +113,7 @@ var finished = function(carCrashBoolean) {
 		players['Player 1'].score--;
 		finishActions();
 
-		var replay = confirm('You were in a car crash!!  Negative poinst for you.\nDo you want to try harder?');
+		var replay = confirm("You're hit!!  Do you want to try harder? \n\n The rebels need you!");
 		if (replay) {
 			start();
 		}
@@ -122,7 +123,7 @@ var finished = function(carCrashBoolean) {
 		finishActions();
 
 		//Ask to replay. 
-		var replay = confirm("Way to go!!!\n \nLet's see how fast you can go...?");
+		var replay = confirm("Way to go!!!\n Again?");
 		if (replay) {
 			start();
 		}

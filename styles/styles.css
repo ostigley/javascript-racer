@@ -7,11 +7,12 @@ text-align: center;
 
 h4 {
 	text-align: center;
+  margin: 0;
 }
 
 
 #main {
-	display: flex;
+	display: block;
 }
 
 
@@ -69,13 +70,12 @@ td.othercars {
 
 body {
   background-color: black;
-
+  font-family: 'Geostar Fill', cursive;
+  color: yellow;
 }
 
 #scorebox {
 	margin-left: 70px;
-  font-family: 'Geostar Fill', cursive;
-  color: yellow;
 }
 
 #player2box {
@@ -141,7 +141,7 @@ section.trafficlights {
 
 .blaster {
   background-image: url('../images/blaster.jpeg');
-  background-size: cover;
+  background-size: contain;
 }
 
 
